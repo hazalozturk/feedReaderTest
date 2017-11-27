@@ -5,15 +5,14 @@ $(function() {
 
         /* It tests to make sure that the
          * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project.*/
+         * empty.*/
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* It loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
@@ -25,7 +24,7 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* It loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
@@ -39,35 +38,34 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* This suite is about the menu  */
     describe('The menu', function() {
 
-      /* TODO: Write a test that ensures the menu element is
+      /* It ensures the menu element is
        * hidden by default. You'll have to analyze the HTML and
        * the CSS to determine how we're performing the
        * hiding/showing of the menu element.
        */
        it('has hidden menu element by default', function() {
-         expect(document.body.className).toContain('menu-hidden');
+         expect(document.body.classList).toContain('menu-hidden');
        });
 
-       /* TODO: Write a test that ensures the menu changes
+       /* TIt ensures the menu changes
         * visibility when the menu icon is clicked. This test
-        * should have two expectations: does the menu display when
+        * has two expectations: does the menu display when
         * clicked and does it hide when clicked again.
         */
         it('changes the menu when clicked', function() {
           document.querySelector('.menu-icon-link').click();
-          expect(document.body.className).not.toContain('menu-hidden');
+          expect(document.body.classList).not.toContain('menu-hidden');
 
           document.querySelector('.menu-icon-link').click();
-          expect(document.body.className).toContain('menu-hidden');
+          expect(document.body.classList).toContain('menu-hidden');
         });
-    })
+    });
 
 
 
-    /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
 
       beforeEach(function(done) {  //Asycn test requirement
@@ -76,21 +74,16 @@ $(function() {
         });
       });
 
-      /* TODO: Write a test that ensures when the loadFeed
+      /* It ensures when the loadFeed
        * function is called and completes its work, there is at least
-       * a single .entry element within the .feed container.
-       * Remember, loadFeed() is asynchronous so this test will require
-       * the use of Jasmine's beforeEach and asynchronous done() function.
-       */
-      it('has at least one ".entry" element within the ".feed" container', function(done) {
-        expect($('.entry').length).toBeGreaterThan(0);
-        done();
+       * a single .entry element within the .feed container.*/
+      it('has at least one ".entry" element within the ".feed" container', function() {
+        expect($('.feed .entry').length).toBeGreaterThan(0);
       });
 
     });
 
-  /* TODO: Write a new test suite named "New Feed Selection" */
-  describe('New Feed Selection', function() {
+    describe('New Feed Selection', function() {
 
       var firstSelect;
 
@@ -103,10 +96,8 @@ $(function() {
         });
       });
 
-      /* TODO: Write a test that ensures when a new feed is loaded
-      * by the loadFeed function that the content actually changes.
-      * Remember, loadFeed() is asynchronous.
-      */
+      /* It ensures when a new feed is loaded
+      * by the loadFeed function that the content actually changes.*/
       it('changes the content when a new feed is laoded', function(done) {
         var newSelect = document.querySelector(".feed").innerHTML;
         expect(firstSelect).not.toBe(newSelect);
